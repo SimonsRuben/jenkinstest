@@ -1,0 +1,66 @@
+<main>
+    <div>
+        <h2>List of all items</h2>
+       <nav>
+            <button (click)="paging(0)">First</button>
+            <button (click)="paging(1)">Previous</button>
+            <button (click)="paging(2)">Next</button>
+            <button (click)="paging(3)">Last</button>
+        </nav>
+        <p>Sorting:
+        <select name="" id="">
+            <option (click)="sorting('id')" selected="selected">id</option>
+            <option (click)="sorting('name')" value="">name</option>
+            <option (click)="sorting('description')" value="">description</option>
+        </select></p>
+        <h3>Query</h3>
+        <p>Name <input #qname type="text" name="" id=""></p>
+        <p>Description: <input #qdesc type="text" name="" id=""></p>
+        <button (click)="querysearch(qname.value,qdesc.value)">Query search</button>
+        <table id="listtable">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>description</th>
+                <th>UpdateItem</th>
+                <th>DeleteItem</th>
+
+            </tr>
+            <tr *ngFor="let item of allitems">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+                <td><button (click)="selectitem(item.id)">update</button></td>
+                <td><button (click)="delitem(item.id)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div>
+        
+    <h2>Adding items</h2>
+        <button (click)="getexample()">Example</button>
+        <p>Name: <input  [(ngModel)]="tempname"></p>
+        <p>description: <input   [(ngModel)]="tempdesc"></p>
+        <p>Player:<select  name="" id=""  >
+            <option selected="selected" (click)="selectedplayer(null)">Select your item</option>
+            <option *ngFor="let player of players" (click)="selectedplayer(player.id)" > {{player.name}}</option>
+
+            
+        </select>
+    </p>
+        <button (click)="makeItem()">Add item</button>
+    </div>
+
+
+    <div *ngIf="selected != null">
+        <h2>Update items</h2>
+        <p>Name: <input #name type="text" [value]="selected.name"></p>
+        <p>description: <input #des type="text" [value]="selected.description"></p>
+        <button (click)="updateItem(name.value,des.value)">Update item</button>
+    </div>
+    </main>
+    <div *ngIf="errormsg != ''" style="border: red solid 2px;">
+        <h3 style="color: red;">ERROR MSG</h3>
+        <p style="color: red;"> {{errormsg}}</p>
+    </div>

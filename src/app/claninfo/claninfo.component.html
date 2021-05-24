@@ -1,0 +1,42 @@
+
+geef je clan id in<input #id type="number" name="" id="">
+<button (click)="getclan(id.value)">Search</button>
+
+<main *ngIf="clan !=null">
+    <table id="listtable">
+        <tr>
+            <th colspan="2">Clan Information</th>
+        </tr>
+        <tr>
+            <td>Clanname:</td>
+            <td>{{clan.clanName}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{clan.description}}</td>
+        </tr>
+        <tr>
+            <td>Amount of members</td>
+            <td>{{memberslist.length}}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Members</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Gold</td>
+        </tr>
+        <tr *ngFor="let member of memberslist">
+            <td>{{member.name}}</td>
+            <td>{{member.gold}}</td>
+        </tr>
+        <tr>
+
+    </table>
+
+</main>
+<div *ngIf="errormsg != ''" style="border: red solid 2px;">
+    <h3 style="color: red;">ERROR MSG</h3>
+    <p style="color: red;"> {{errormsg}}</p>
+</div>
+

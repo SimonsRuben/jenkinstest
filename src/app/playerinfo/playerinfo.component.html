@@ -1,0 +1,50 @@
+
+geef je Player id in<input #id type="number" name="" id="">
+<button (click)="getplayer(id.value)">Search</button>
+
+<main *ngIf="selectedPlayer !=null">
+    <table id="listtable">
+        <tr>
+            <th colspan="2">PlayerInformation</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{selectedPlayer.name}}</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>{{selectedPlayer.password}}</td>
+        </tr>
+        <tr>
+            <td>Gold</td>
+            <td>{{selectedPlayer.gold}}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Inventory</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+        </tr>
+        <tr *ngFor="let item of itemlist">
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+        </tr>
+        <tr>
+            <th colspan="2">Clans</th>
+        </tr>
+        <tr>
+            <td>Clanname</td>
+            <td>Description</td>
+        </tr>
+        <tr *ngFor="let clan of clanlist">
+            <td>{{clan.clanName}}</td>
+            <td>{{clan.description}}</td>
+        </tr>
+    </table>
+
+</main>
+<div *ngIf="errormsg != ''" style="border: red solid 2px;">
+    <h3 style="color: red;">ERROR MSG</h3>
+    <p style="color: red;"> {{errormsg}}</p>
+</div>

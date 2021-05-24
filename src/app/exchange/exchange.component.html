@@ -1,0 +1,47 @@
+<main>
+    <div>
+        <h2>List of all Exchanges</h2>
+        <nav>
+            <button (click)="paging(0)">First</button>
+            <button (click)="paging(1)">Previous</button>
+            <button (click)="paging(2)">Next</button>
+            <button (click)="paging(3)">Last</button>
+        </nav>
+        <table id="listtable">
+            <tr>
+                <th>Id</th>
+                <th>Seller</th>
+                <th>Item</th>
+                <th>Cost</th>
+                <th>Buy/delete exchange</th>
+
+            </tr>
+            <tr *ngFor="let ex of allexchanges">
+                <td>{{ex.id}}</td>
+                <td>{{ex.seller.name}}</td>
+                <td>{{ex.item.name}}</td>
+                <td>{{ex.cost}}</td>
+                <td><button (click)="delexchange(ex.id)">Buy/delete</button></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div>
+        <p>ActivePlayedId:<input #pl type="number" name="" id=""><Button (click)="setactive(pl.value)">ActivePlayer</Button></p>
+        <h2>Adding exchange</h2>
+        <select name="" id=""  >
+            <option selected="selected" (click)="selectitem(null)">Select your item</option>
+            <option *ngFor="let item of activeitems" (click)="selectitem(item.id)" > {{item.name}}</option>
+
+            
+        </select>
+        <p>Cost: <input #gold type="number"></p>
+        <button (click)="makeexchange(gold.value)">Add Exchange</button>
+    </div>
+    </main>
+
+    
+    <div *ngIf="errormsg != ''" style="border: red solid 2px;">
+        <h3 style="color: red;">ERROR MSG</h3>
+        <p style="color: red;"> {{errormsg}}</p>
+    </div>

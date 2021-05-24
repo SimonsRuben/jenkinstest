@@ -1,0 +1,62 @@
+
+    <div>
+        <h2>List of all clans</h2>
+        <nav>
+            <button (click)="paging(0)">First</button>
+            <button (click)="paging(1)">Previous</button>
+            <button (click)="paging(2)">Next</button>
+            <button (click)="paging(3)">Last</button>
+        </nav>
+        <table id="listtable">
+            <tr>
+                <th>Id</th>
+                <th>ClanName</th>
+                <th>description</th>
+                <th>Amount of Members</th>
+                <th>UpdateClan</th>
+                <th>DeleteClan</th>
+                <th>Join/leave Clan</th>
+            </tr>
+            <tr *ngFor="let clan of clans">
+                <td>{{clan.id}}</td>
+                <td>{{clan.clanName}}</td>
+                <td>{{clan.description}}</td>
+                <td>{{clan.members.length}}</td>
+                <td><button (click)="selectclan(clan.id)">update</button></td>
+                <td><button (click)="delclan(clan.id)">Delete</button></td>
+                <td><button *ngIf="inclan(clan.id) == false" (click)="addplayertoclan(clan.id)">Join</button><button *ngIf="inclan(clan.id)" (click)="delplayerofclan(clan.id)">leave</button></td>
+            </tr>
+        </table>
+    </div>
+    <main>
+
+    <div>
+        
+    <h2>Adding clan</h2>
+        <p>ClanName: <input #name type="text"></p>
+        <p>description: <input #des type="text"></p>
+        <button (click)="makeclan(name.value,des.value)">Add clan</button>
+    </div>
+    <div *ngIf="selected != null">
+        <h2>Update clan</h2>
+        <p>ClanName: <input #name type="text" [value]="selected.clanName"></p>
+        <p>description: <input #des type="text" [value]="selected.description"></p>
+    
+        <button (click)="updateclan(name.value,des.value)">Update clan</button>
+    </div>
+    <div>
+        <h2>Set active player</h2>
+        <p>Player:<select  name="" id=""  >
+            <option selected="selected" (click)="selectedplayer(null)">Select your item</option>
+            <option *ngFor="let player of players" (click)="selectedplayer(player.id)" > {{player.name}}</option>
+
+            
+        </select>
+    </p>
+    </div>
+    </main>
+
+    <div *ngIf="errormsg != ''" style="border: red solid 2px;">
+        <h3 style="color: red;">ERROR MSG</h3>
+        <p style="color: red;"> {{errormsg}}</p>
+    </div>

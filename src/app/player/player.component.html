@@ -1,0 +1,56 @@
+<main>
+
+<div>
+    <h2>List of all players</h2>
+    <nav>
+        <button (click)="paging(0)">First</button>
+        <button (click)="paging(1)">Previous</button>
+        <button (click)="paging(2)">Next</button>
+        <button (click)="paging(3)">Last</button>
+    </nav>
+    <select name="" id="">
+        <option (click)="sorting('id')" selected="selected">id</option>
+        <option (click)="sorting('name')" value="">name</option>
+        <option (click)="sorting('password')" value="">password</option>
+        <option (click)="sorting('gold')" value="">gold</option>
+    </select>
+    <table id="listtable">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Password</th>
+            <th>Gold</th>
+            <th>UpdatePlayer</th>
+            <th>DeletePlayer</th>
+        </tr>
+        <tr *ngFor="let player of allplayers">
+            <td>{{player.id}}</td>
+            <td>{{player.name}}</td>
+            <td>{{player.password}}</td>
+            <td>{{player.gold}}</td>
+            <td><button (click)="selectplayer(player.id)">update</button></td>
+            <td><button (click)="delplayer(player.id)">Delete</button></td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    
+<h2>Adding players</h2>
+    <p>Name: <input #name type="text"></p>
+    <p>Password: <input #pass type="text"></p>
+    <button (click)="makePlayer(name.value,pass.value)">Add player</button>
+</div>
+<div *ngIf="selected != null">
+    <h2>Update player</h2>
+    <p>Name: <input #name type="text" [value]="selected.name"></p>
+    <p>password: <input #des type="text" [value]="selected.password"></p>
+    <p>gold: <input #gold type="number" [value]="selected.gold"></p>
+
+    <button (click)="updateplayer(name.value,des.value,gold.value)">Update player</button>
+</div>
+</main>
+<div *ngIf="errormsg != ''" style="border: red solid 2px;">
+    <h3 style="color: red;">ERROR MSG</h3>
+    <p style="color: red;"> {{errormsg}}</p>
+</div>

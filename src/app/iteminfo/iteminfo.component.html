@@ -1,0 +1,32 @@
+
+geef je Item id in<input #id type="number" name="" id="">
+<button (click)="getitem(id.value)">Search</button>
+
+<main *ngIf="it !=null">
+    <table id="listtable">
+        <tr>
+            <th colspan="2">Item information</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{it.name}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{it.description}}</td>
+        </tr>
+    </table>
+ <button (click)="getexternal()">Get external Picture</button>
+
+ <div *ngIf=" picsrc != null">
+     <img [src]="picsrc" alt="">
+ </div>
+
+
+    
+
+</main>
+<div *ngIf="errormsg != ''" style="border: red solid 2px;">
+    <h3 style="color: red;">ERROR MSG</h3>
+    <p style="color: red;"> {{errormsg}}</p>
+</div>

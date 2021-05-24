@@ -1,0 +1,13 @@
+
+<h1>Van wat wil je informatie zien?<select name="" id="">
+    <option selected="selected" (click)="active('player')">player</option>
+    <option (click)="active('clan')">clan</option>
+    <option (click)="active('item')">item</option>
+</select></h1>
+<app-iteminfo *ngIf="selected == 'item'"></app-iteminfo>
+<app-claninfo *ngIf="selected == 'clan'"></app-claninfo>
+<app-playerinfo *ngIf="selected == 'player'"></app-playerinfo>
+<div *ngIf="errormsg != ''" style="border: red solid 2px;">
+    <h3 style="color: red;">ERROR MSG</h3>
+    <p style="color: red;"> {{errormsg}}</p>
+</div>
