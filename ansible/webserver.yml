@@ -56,11 +56,6 @@
            user:
                    name: dokwerker
                    comment: tunnel user
-         - name: rubne gebruiker maken
-           user:
-                   name: ruben
-                   groups: wheel,docker
-                   append: yes
 
          - name: add user to docker
            user:
@@ -71,41 +66,4 @@
            authorized_key:
                    user: root
                    state: present
-                   key: "{{ lookup('file','/home/ruben/.ssh/id_rsa.pub') }}"
-
-         - name:  webserver container starten
-           community.docker.docker_container:
-                   name: webserver
-                   image: nginx
-                   state: started
-                   restart: yes
-                   volumes:
-                           - /home:/usr/share/nginx/html
-                   ports:
-                           - 8080:80
-                   env:
-                           SOME_KEY: "blbalaba"
-         - name: jenkins container starten
-           community.docker.docker_container:
-                   name: jenkins
-                   image: jenkins/jenkins:lts
-                   state: started
-                   restart: yes
-                   volumes:
-                           - /home/jenkins:/var/jenkins
-                   ports:
-                           - 8000:8080
-                           - 50000:50000
-         - name: show all docker contianers
-           command: "docker ps"
-           register: hello
-         - debug: msg={{ hello.stdout }}
-
-         - name: installing ansible
-           yum:
-                   name: ansible
-                   state: latest
-         - name: verifying ansible install
-           command: "ansible --version"
-           register: ans
-         - debug: msg={{ ans.stdout}}                                           
+                   key: "{{ lookup('file','/home/ruben/.ssh/id_rsa.pub') }}"                                         
