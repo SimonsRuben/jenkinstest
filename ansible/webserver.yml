@@ -1,7 +1,7 @@
 ---
 #docker install
 
-- hosts: centos
+- hosts: test
   user: root
 
   tasks:
