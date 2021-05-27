@@ -61,9 +61,4 @@
            user:
                    name: dokwerker
                    groups: docker
-                   append: yes
-         - name: key zetter voor root
-           authorized_key:
-                   user: root
-                   state: present
-                   key: "{{ lookup('file','/home/ruben/.ssh/id_rsa.pub') }}"                                         
+                   append: yes                                    
