@@ -73,7 +73,7 @@
                    state: present
                    key: "{{ lookup('file','/home/ruben/.ssh/id_rsa.pub') }}"
 
-         - name: installing docker sdk
+         - name:  webserver container starten
            community.docker.docker_container:
                    name: webserver
                    image: nginx
