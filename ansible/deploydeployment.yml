@@ -9,3 +9,12 @@
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
                    dest: /home/deployment
+         - name: Run Docker container using simple-docker-image
+           docker_container:
+                   name: simple-docker-container
+                   image: httpd:latest
+                   state: started
+                   recreate: yes
+                   detach: true
+                   ports:
+                     - "8888:8080"
