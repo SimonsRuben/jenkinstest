@@ -9,10 +9,6 @@
            yum:
                    name:
                            - epel-release
-         - name: installeer yum utils
-           yum:
-                   name: yum-utils
-                   state: latest
          - name: installeer device-mapper-persistent-data
            yum:
                    name: device-mapper-persistent-data
