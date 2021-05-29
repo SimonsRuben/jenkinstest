@@ -1,0 +1,63 @@
+---
+#docker install
+
+- hosts: test
+  user: root
+
+  tasks:
+         - name : epel installeren
+           yum:
+                   name:
+                           - epel-release
+         - name: installeer yum utils
+           yum:
+                   name: yum-utils
+                   state: latest
+         - name: installeer device-mapper-persistent-data
+           yum:
+                   name: device-mapper-persistent-data
+                   state: latest
+         - name: installeer lvm2
+           yum:
+                   name: lvm2
+                   state: latest
+         - name: install python3
+           command: "yum install -y python3"
+         - name: install pythin pip
+           command: "yum install -y python-pip"
+
+         - name: voeg de docker ce repo toe
+           get_url:
+                   url: https://download.docker.com/linux/centos/docker-ce.repo
+                   dest: /etc/yum.repos.d/docer-ce.repo
+           become: yes
+         - name: enable docker edge repo
+           ini_file:
+                   dest: /etc/yum.repos.d/docer-ce.repo
+                   section: 'docker-ce-edge'
+                   option: enabled
+                   value: 0
+           become: yes
+         - name: Installeer docker
+           package:
+                   name: docker-ce
+                   state: latest
+           become: yes
+         - name: start docker service
+           service:
+                   name: docker
+                   state: started
+                   enabled: yes
+           become: yes
+         - name: installing docker sdk
+           command: "pip install docker-py"
+
+         - name : docker gebruiker makern
+           user:
+                   name: dokwerker
+                   comment: tunnel user
+         - name: add user to docker
+           user:
+                   name: dokwerker
+                   groups: docker
+                   append: yes

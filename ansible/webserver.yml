@@ -1,6 +1,0 @@
----
-
-# docker install
-
-- hosts: testserver
-  user: root
