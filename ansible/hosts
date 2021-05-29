@@ -1,2 +1,2 @@
 [test]
-192.168.180.133 ansible_user=root become=yes become-user=root
+192.168.180.133 ansible_user=root become=yes become-user=root ansible_ssh_pass=uiopuiop
