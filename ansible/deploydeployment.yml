@@ -1,0 +1,22 @@
+---
+#docker install
+
+- hosts: test
+  user: root
+
+  tasks:
+         - name: copying files to deployment container
+           copy:
+                   src: /usr/share/website
+                   dest: /home/deployment
+
+         - name: starting deployment webserver container
+           community.docker.docker_container:
+                   name: deployment
+                   image: httpd:latest
+                   state: started
+                   restart: yes
+                   volumes:
+                           - /home/deployment/website:/usr/local/apache2/htdocs
+                   ports:
+                           - 8081:80
