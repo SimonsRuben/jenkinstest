@@ -9,3 +9,13 @@
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
                    dest: /home/testing
+          - name: docker container
+            community.docker.docker_container:
+                   name: webserver
+                   image: nginx
+                   state: started
+                   restart: yes
+                   volumes:
+                           - /home:/usr/share/nginx/html
+                   ports:
+                           - 8080:80
