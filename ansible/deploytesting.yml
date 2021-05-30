@@ -5,12 +5,8 @@
   user: root
 
   tasks:
-         - name: docker container
-           command: "docker kill $(docker ps -q)"
-           
+
          - name: copying files to testing
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
                    dest: /home/testing
-         - name: docker container
-           command: "docker run -d -p 8080:80 --name=testing -v /home:/var/www httpd:latest"
