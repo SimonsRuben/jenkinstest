@@ -9,7 +9,7 @@
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
                    dest: /home/testing
-          - name: docker container
+         - name: docker container
             community.docker.docker_container:
                    name: webserver
                    image: nginx
