@@ -8,4 +8,4 @@
          - name: copying files to deployment container
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
-                   dest: /home/deployment
+                   dest: /home/ruben/project/publish

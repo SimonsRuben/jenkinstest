@@ -5,8 +5,7 @@
   user: root
 
   tasks:
-
          - name: copying files to testing
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
-                   dest: /home/testing
+                   dest: /home/ruben/project/testing
