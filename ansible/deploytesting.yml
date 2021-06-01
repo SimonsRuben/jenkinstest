@@ -7,5 +7,5 @@
   tasks:
          - name: copying files to testing
            copy:
-                   src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
-                   dest: /home/project/testing
+                   src: /var/jenkins_home/workspace/Angulartest/angular/dist/website/
+                   dest: /home/project/testing/
