@@ -7,5 +7,5 @@
   tasks:
          - name: copying files to deployment container
            copy:
-                   src: /var/jenkins_home/workspace/Angulartest/angular/dist/website/
+                   src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
                    dest: /home/project/publish
