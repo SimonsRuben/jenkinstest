@@ -8,4 +8,4 @@
          - name: copying files to testing
            copy:
                    src: /var/jenkins_home/workspace/Angulartest/angular/dist/website
-                   dest: /home/ruben/project/testing
+                   dest: /home/project/testing
